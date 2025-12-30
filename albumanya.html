@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album Anya - Waku Waku! 📸</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;500;700&family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        :root {
+            --anya-pink: #FF90BC;
+            --anya-pink-light: #FFC0D9;
+            --peanut-yellow: #F9D923;
+            --dark-text: #4A403A;
+            --cream-bg: #FFF5E4;
+            --glass-white: rgba(255, 255, 255, 0.95);
+        }
+
+        body {
+            font-family: 'Varela Round', sans-serif;
+            background-color: var(--anya-pink-light);
+            background-image: 
+                radial-gradient(var(--anya-pink) 15%, transparent 16%),
+                radial-gradient(var(--anya-pink) 15%, transparent 16%);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            color: var(--dark-text);
+            overflow-x: hidden;
+        }
+
+        #header-banner {
+            width: 95%;
+            max-width: 1100px;
+            height: 450px; 
+            background-image: url('Gambar/banneranya.jpg');
+            background-size: cover;
+            background-position: center 20%;
+            margin: 20px auto 10px auto;
+            border-radius: 40px;
+            border: 6px solid white;
+            box-shadow: 0 15px 35px rgba(255, 144, 188, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(255, 144, 188, 0.7));
+            padding: 30px;
+            color: white;
+            text-align: center;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
+            margin-bottom: 30px;
+        }
+
+        .nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 10px 15px;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(255, 144, 188, 0.4);
+            border: 4px solid var(--peanut-yellow);
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav a {
+            color: var(--anya-pink);
+            text-decoration: none;
+            padding: 10px 25px;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .nav a:hover, .nav a.active {
+            background: var(--anya-pink);
+            color: white;
+            transform: scale(1.1) rotate(-3deg);
+            box-shadow: 0 5px 15px rgba(255, 144, 188, 0.5);
+        }
+
+        @keyframes floatWidget {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .album-header-widget {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto 30px auto;
+            padding: 30px;
+            background: var(--glass-white);
+            border-radius: 40px;
+            border: 5px dashed var(--anya-pink);
+            text-align: center;
+            box-shadow: 0 15px 0px rgba(0,0,0,0.05);
+            animation: floatWidget 3s ease-in-out infinite;
+        }
+
+        .album-title-text {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.5rem;
+            color: var(--anya-pink);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0px var(--peanut-yellow);
+        }
+
+        .content-card {
+            width: 100%;
+            max-width: 1100px;
+            background: white;
+            margin: 0 auto 50px auto;
+            padding: 50px;
+            border-radius: 50px;
+            box-shadow: 0 20px 0 var(--anya-pink-light), 0 40px 60px rgba(0,0,0,0.1);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .photo-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border: 2px solid #eee;
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        .photo-card p {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 5px;
+        }
+
+        .benefit-text {
+            font-size: 0.8rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        .photo-card:hover {
+            transform: scale(1.08) rotate(2deg);
+            border-color: var(--anya-pink);
+            box-shadow: 0 15px 30px rgba(255, 144, 188, 0.3);
+        }
+
+        .sticker-box {
+            background: var(--cream-bg);
+            padding: 20px;
+            border-radius: 30px;
+            margin-top: 40px;
+            border: 3px dashed var(--anya-pink);
+            text-align: center;
+        }
+
+        footer {
+            font-size: 0.85rem;
+            color: var(--dark-text);
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-banner">
+        <div class="banner-overlay">
+            <h2 style="font-family: 'Fredoka'; font-weight: 700;">✨ Anya Forger Gallery ✨</h2>
+        </div>
+    </div>
+
+    <div class="nav-container">
+        <nav class="nav">
+            <a href="homeanya.html"><i class="fas fa-home"></i> Home</a>
+            <a href="profileanya.html"><i class="fas fa-user-astronaut"></i> Profile</a>
+            <a href="#" class="active"><i class="fas fa-camera-retro"></i> Album</a>
+            <a href="contactanya.html"><i class="fas fa-envelope-open-text"></i> Contact</a>
+        </nav>
+    </div>
+
+    <div class="album-header-widget">
+        <div class="album-title-text">📸 Memori Waku Waku</div>
+        <p>Koleksi foto berharga Anya bersama Keluarga Forger!</p>
+    </div>
+
+    <div class="container">
+        <div class="content-card">
+            <h1 class="text-center mb-5" style="font-family: 'Fredoka'; color: var(--anya-pink);">Galeri <span style="color: var(--peanut-yellow); -webkit-text-stroke: 1px var(--dark-text);">Foto</span> ✨</h1>
+            
+            <div class="gallery-grid">
+                <div class="photo-card">
+                    <img src="Gambar/anyasenyum.jpeg" alt="Anya Senyum">
+                    <p>Anya Senyum "Heh" 😏</p>
+                    <span class="benefit-text">Selalu tegar meski sedang gugup!</span>
+                </div>
+
+                <div class="photo-card">
+                    <img src="Gambar/haripertamasekolah.jpeg" alt="Anya Sekolah">
+                    <p>Hari Pertama Sekolah 🎒</p>
+                    <span class="benefit-text">Berani mencoba hal baru itu keren!</span>
+                </div>
+
+                <div class="photo-card">
+                    <img src="Gambar/makankacangenak.jpeg" alt="Anya Makan">
+                    <p>Makan Kacang Enak! 🥜</p>
+                    <span class="benefit-text">Hargai makanan kecil yang bikin bahagia.</span>
+                </div>
+
+                <div class="photo-card">
+                    <img src="Gambar/mainbarengbond.jpeg" alt="Anya dan Bond">
+                    <p>Main bareng Bond 🐕</p>
+                    <span class="benefit-text">Sayangi sesama makhluk hidup ya!</span>
+                </div>
+
+                <div class="photo-card">
+                    <img src="Gambar/lagimisirahasia.jpeg" alt="Misi Anya">
+                    <p>Lagi Misi Rahasia! 🕵️</p>
+                    <span class="benefit-text">Fokus pada tujuan sampai tercapai.</span>
+                </div>
+
+                <div class="photo-card">
+                    <img src="Gambar/anyabersantai.jpeg" alt="Anya Santai">
+                    <p>Anya Bersantai! 😎</p>
+                    <span class="benefit-text">Istirahat penting biar otak nggak panas.</span>
+                </div>
+
+                <div class="photo-card">
+                    <img src="Gambar/anyatidur.jpeg" alt="Anya Tidur">
+                    <p>Anya Tidur! 😴</p>
+                    <span class="benefit-text">Tidur cukup bikin badan sehat kembali.</span>
+                </div>
+
+                <div class="photo-card">
+                    <img src="Gambar/wakuwaku.jpeg" alt="Anya Waku Waku">
+                    <p>Waku Waku! ✨</p>
+                    <span class="benefit-text">Jaga rasa ingin tahu agar hidup seru!</span>
+                </div>
+            </div>
+
+            <div class="sticker-box">
+                <p style="font-size: 1.1rem; margin: 0;">
+                    <i class="fas fa-heart" style="color: var(--anya-pink);"></i> 
+                    Setiap foto punya cerita, setiap cerita punya pelajaran 
+                    <i class="fas fa-heart" style="color: var(--anya-pink);"></i>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center">
+        <p>© Zahra Rahmani - 251011700011 - 01SIFP001</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
